@@ -5,10 +5,8 @@ load_dotenv()
 
 
 class Config:
-    # Telegram User API (MTProto)
-    TG_API_ID: int = int(os.getenv("TG_API_ID", "0"))
-    TG_API_HASH: str = os.getenv("TG_API_HASH", "")
-    TG_SESSION_STRING: str = os.getenv("TG_SESSION_STRING", "")
+    # Telegram Bot API
+    TG_BOT_TOKEN: str = os.getenv("TG_BOT_TOKEN", "")
     TG_ADMIN_IDS: list[int] = [
         int(x.strip())
         for x in os.getenv("TG_ADMIN_IDS", "").split(",")
@@ -21,13 +19,15 @@ class Config:
     GROK_MODEL: str = os.getenv("GROK_MODEL", "grok-4.20-auto")
 
     # Behavior
-    TRIGGER_COMMAND: str = os.getenv("TRIGGER_COMMAND", "/Grok")
     STREAM_UPDATE_INTERVAL: float = float(os.getenv("STREAM_UPDATE_INTERVAL", "0.8"))
     STREAM_MIN_CHUNKS: int = int(os.getenv("STREAM_MIN_CHUNKS", "5"))
     ENABLE_THINKING_DISPLAY: bool = os.getenv("ENABLE_THINKING_DISPLAY", "true").lower() == "true"
     ENABLE_IMAGE_GENERATION: bool = os.getenv("ENABLE_IMAGE_GENERATION", "true").lower() == "true"
     ENABLE_DEEP_SEARCH: bool = os.getenv("ENABLE_DEEP_SEARCH", "false").lower() == "true"
     MAX_HISTORY: int = int(os.getenv("MAX_HISTORY", "40"))
+
+    # Default system prompt
+    DEFAULT_SYSTEM_PROMPT: str = "你是一个有用的AI助手。"
 
 
 config = Config()

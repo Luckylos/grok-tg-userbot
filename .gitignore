@@ -1,7 +1,3 @@
-# Session files (contains auth secrets)
-session/*.session
-session/*.session-journal
-
 # Environment
 .env
 

@@ -1,14 +1,13 @@
 services:
-  grok-tg-userbot:
+  grok-tg-bot:
     build: .
-    container_name: grok-tg-userbot
+    container_name: grok-tg-bot
     restart: unless-stopped
     env_file: .env
     networks:
       - grok2api_default
     volumes:
       - ./data:/app/data
-      - ./session:/app/session
     logging:
       driver: json-file
       options:
