@@ -4,6 +4,7 @@ import asyncio
 import logging
 import sys
 import time
+import re
 
 from aiogram import Bot, Dispatcher, Router, F
 from aiogram.types import Message, Update
@@ -93,6 +94,18 @@ bot = Bot(
 )
 dp = Dispatcher()
 router = Router()
+
+# Cache bot username for group mention detection
+_bot_username: str | None = None
+
+
+async def _get_bot_username() -> str:
+    """Get and cache bot username."""
+    global _bot_username
+    if _bot_username is None:
+        me = await bot.get_me()
+        _bot_username = me.username
+    return _bot_username
 
 
 # ============================================================
@@ -515,14 +528,14 @@ async def handle_group_mention(message: Message):
     if not message.text:
         return
 
-    # Check if bot is mentioned in the text
-    me = await bot.get_me()
-    username = me.username
+    # Check if bot is mentioned in the text (case-insensitive)
+    username = await _get_bot_username()
     mention = f"@{username}"
 
-    if mention in message.text:
+    if mention.lower() in message.text.lower():
         # Remove the mention from the text
-        question = message.text.replace(mention, "").strip()
+        import re as _re
+        question = _re.sub(_re.escape(mention), "", message.text, flags=_re.IGNORECASE).strip()
         if not question:
             await message.reply("你好！有什么可以帮你的？")
             return
