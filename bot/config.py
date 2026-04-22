@@ -18,7 +18,7 @@ class Config:
     # Grok API
     GROK_API_BASE: str = os.getenv("GROK_API_BASE", "http://grok2api:8000/v1")
     GROK_API_KEY: str = os.getenv("GROK_API_KEY", "")
-    GROK_MODEL: str = os.getenv("GROK_MODEL", "grok-4.20-0309")
+    GROK_MODEL: str = os.getenv("GROK_MODEL", "grok-4.20-auto")
 
     # Behavior
     TRIGGER_COMMAND: str = os.getenv("TRIGGER_COMMAND", "/Grok")
