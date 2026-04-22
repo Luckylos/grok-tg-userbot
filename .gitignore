@@ -1,0 +1,15 @@
+# Session files (contains auth secrets)
+session/*.session
+session/*.session-journal
+
+# Environment
+.env
+
+# Data
+data/*.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
