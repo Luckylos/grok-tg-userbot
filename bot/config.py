@@ -16,7 +16,7 @@ class Config:
     # Grok API
     GROK_API_BASE: str = os.getenv("GROK_API_BASE", "http://grok2api:8000/v1")
     GROK_API_KEY: str = os.getenv("GROK_API_KEY", "")
-    GROK_MODEL: str = os.getenv("GROK_MODEL", "grok-4.20-auto")
+    GROK_MODEL: str = os.getenv("GROK_MODEL", "grok-4.20-0309")
 
     # Behavior
     STREAM_UPDATE_INTERVAL: float = float(os.getenv("STREAM_UPDATE_INTERVAL", "0.8"))
