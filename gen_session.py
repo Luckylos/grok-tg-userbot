@@ -12,8 +12,8 @@
 
 from pyrogram import Client
 
-api_id = 21614471
-api_hash = "1f72a6b8575018b4cf19972b9c6dbbb8"
+api_id = 
+api_hash = ""
 
 with Client("my_account", api_id=api_id, api_hash=api_hash) as app:
     session_string = app.export_session_string()
